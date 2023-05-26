@@ -15,7 +15,7 @@ export const LOCALE = ["en-EN"]; // set to [] to use the environment default
 export const LOGO_IMAGE = {
   enable: true,
   svg: false,
-  width: 85,
+  width: 50,
   height: 46,
 };
 
