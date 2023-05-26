@@ -9,6 +9,7 @@ import { SITE } from "./src/config";
 import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
+
 export default defineConfig({
   site: SITE.website,
   integrations: 
