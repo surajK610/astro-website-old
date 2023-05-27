@@ -2,9 +2,8 @@
 import { LOGO_IMAGE, SITE } from "@config";
 import Hr from "./Hr.astro";
 import LinkButton from "./LinkButton.astro";
-
 import logoPNG from "/assets/logo.png";
-import logoSVG from "/assets/logo.svg";
+import logoSVG from "/assets/logo.svg?raw";
 
 export interface Props {
   activeNav?: "posts" | "tags" | "about" | "search";
@@ -20,12 +19,14 @@ const { activeNav } = Astro.props;
       <a href="/" class="logo">
         {
           LOGO_IMAGE.enable ? (
-            <img
-              src={LOGO_IMAGE.svg ? logoSVG : logoPNG}
-              alt="AstroPaper Logo"
-              width={LOGO_IMAGE.width}
-              height={LOGO_IMAGE.height}
-            />
+
+            LOGO_IMAGE.svg ? <Fragment set:html={logoSVG} /> : <img
+                src={logoPNG}
+                alt="AstroPaper Logo"
+                width={LOGO_IMAGE.width}
+                height={LOGO_IMAGE.height}
+              />
+            
           ) : (
             SITE.title
           )
