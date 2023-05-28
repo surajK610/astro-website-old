@@ -1,0 +1,81 @@
+---
+author: Suraj Anand
+pubDatetime: 2023-05-25T10:32:00Z
+title: A Foray into Disentangled Learning
+postSlug: disentangled-learning
+featured: false
+draft: false
+tags:
+  - representation learning
+  - image generation
+ogImage: ""
+description:
+  Some background on disentangled learning and my attempt to engineer a new algorithm
+---
+import Latex from '../../components/Latex.astro'
+import Latex_Line from '../../components/Latex-Line.astro'
+import katex from 'katex';
+
+## Table of Contents 
+
+## Disclaimer
+I am not an expert in Disentangled Learning. I am a student who is interested in the field and is trying to learn more about it. 
+This is also my first blog post. I am writing this to help me learn more about the field and to help others who are interested in the field.
+I will try to write this so that it is accessible to anyone with a basic understanding of machine learning. If you find any errors, please
+let me know!
+
+## Background
+
+Before the era of deep learning (circa AlexNet 2012), the field of machine learning was dominated by statistical science. 
+The vast majority of a practitioner's time was spent on feature engineering, or the process of extracting meaningful
+features from raw data. This was a tedious process, and often required a deep understanding of the domain in which the data was
+collected. For example, to classify an orange versus an apple, a practicioner may have extracted mean color, a
+[histogram of oriented gradients (HOG)](https://en.wikipedia.org/wiki/Histogram_of_oriented_gradients), 
+number of edges, and other extracted visual features and trained a logistic regression model. 
+
+![oranges vs apples](../../../public/disentangled-learning/oranges-vs-apples.jpeg)
+
+These days, almost anyone can download a pre-trained [ResNet](https://huggingface.co/docs/transformers/model_doc/resnet) model, 
+freeze the weights, and train a new classification head (i.e. last layer) with the right number of output classes. With (1) enough 
+orange and apples and (2) a reasonable architecture and optimizer, the model will learn to classify oranges versus apples almost perfectly. 
+Now, I'm not saying that feature engineering is dead -- there's a number of applications where domain knowledge is still required including 
+3-dimensional generation, molecule modeling, weather prediction, drug discovery, etc. However, feature engineering is no longer the popular kid 
+on the block. It's limited to applications where we don't have enough data or do not have complex enough models. 
+
+So, what happened? Well, we asked ourselves why go through the tedious process of figuring out what features are important when we can let the 
+model figure out features. We tried this by having end-to-end Deep Neural Networks (DNNs) and it worked splendidly. Thus, we surmised that the 
+function of everything up to your standard classification/regression head in a DNNs may be thought of as learned feature engineering, slapped 
+the term "representation learning" on it, and called it a day. 
+
+Well, there are a couple issues with this. While DNNs are wonderful pattern recognizers, they are not as robust as us humans nor as generalizable. 
+These shortcomings with DNNs are often attributed to failures in learning a faithful representation of the underlying data structure. 
+Specifically, these weaknesses show themselves to a greater extent when latent representations possess *entangled features*, or features that have 
+interwoven or overlapping representations. Mathematically, we can think of two independent features <Latex formula='a'/> and <Latex formula='b'/>
+as mapping to vector subspaces <Latex formula='A'/> and <Latex formula='B'/> in our latent representations. When we have 
+entangled features, <Latex formula='A'/> and <Latex formula='B'/> are not necessarily orthogonal (i.e. <Latex formula='A \perp B \ne \empty'/>), 
+which often causes interference from feature <Latex formula='b'/> when we try to use <Latex formula='a.'/> (As a brief aside, one interesting case 
+of entanglement is due to [superposition]() LINK, where two neurons map to the same feature. This phenomenon has been known to occur when we are trying 
+to represent more features than we have orthogonal directions).
+
+Let us draw this back to our oranges versus apples example. Let us assume that most of the apples are red in our dataset (i.e. there is a high 
+co-occurence of the color red and the apple shape). We train some basic ResNet, and extract the last layer as our representation. 
+In this representation, the color red and apple shape are likely represented by highly overlapping vector subspaces. Now, suppose our classifier 
+sees a green apple: the network would be utterly confused by these mixed signals and it's behavior irrationsal. Moreover, when we try to use our
+human intuition to rectify the anatomy of the network, we would be at a pass [MAKE SURE RIGHT worked] as it would be very difficult to interpret 
+what is our representation corresponds to **color** and what corresponds to **shape**. Entangled representations often result in reliance on 
+depedence on spurious correlations, uninterpretable predictions, and non-compositional representations. 
+
+This is the motivation for **_disentangled learning_**, where independent causal factors are represented by orthogonal (and often axis-aligned)
+dimensions. Below, I will summarize the evolution of disentangled learning and talk a little bit about my half-baked algorithmic exploration.
+
+## Evolution
+
+### Beta-VAE
+
+### InfoGAN
+
+### Counterfactual Generator Networks (CGNs)
+
+## My Approach
+
+There are two main instances of disentangled learning.
