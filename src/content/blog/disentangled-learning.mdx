@@ -15,6 +15,7 @@ description:
 import Latex from '../../components/Latex.astro'
 import Latex_Line from '../../components/Latex-Line.astro'
 import katex from 'katex';
+import oranges_vs_apples from '/disentangled_learning/oranges-vs-apples.jpeg'
 
 ## Table of Contents 
 
@@ -33,7 +34,14 @@ collected. For example, to classify an orange versus an apple, a practicioner ma
 [histogram of oriented gradients (HOG)](https://en.wikipedia.org/wiki/Histogram_of_oriented_gradients), 
 number of edges, and other extracted visual features and trained a logistic regression model. 
 
-![oranges vs apples](../../../public/disentangled-learning/oranges-vs-apples.jpeg)
+{console.log(oranges_vs_apples)}
+<img
+    src={oranges_vs_apples}
+    alt="Oranges versus Apples"
+    width="1000"
+    height="auto"
+  />
+
 
 These days, almost anyone can download a pre-trained [ResNet](https://huggingface.co/docs/transformers/model_doc/resnet) model, 
 freeze the weights, and train a new classification head (i.e. last layer) with the right number of output classes. With (1) enough 
