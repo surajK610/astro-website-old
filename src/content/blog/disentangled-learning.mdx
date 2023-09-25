@@ -82,13 +82,19 @@ Disentangled representations are learned by (1) unsupervised learning and (2) su
 independent factors of variation in the data without any labels. On the other hand, in the supervised learning of disentangled representations, 
 the causal structure of our data is assumed to be known and labeled -- that is, we would know that color, shape, and texture and the causal factors 
 in the prediction of oranges versus apples and we would have labels of these factors for each data point. We will discuss both of these approaches. 
-One important note is that disentangled learning is 
+One important note is that current disentangled learning is heavily reliant on the assumption that causal mechanims are **mutually independent**. 
+This is a very strong assumption, and often does not hold in the real world.
 
 ### Beta-VAE
 
-### InfoGAN
+### Other approaches
 
-### Counterfactual Generator Networks (CGNs)
+Other approaches include 
+1. [InfoGAN](https://arxiv.org/abs/1606.03657), which is a generative adversarial network that also maximizes the
+mutual information between a small subset of the latent variables and the observation, thus encouraging disentangled learning in an 
+unsupervised fashion
+2. [FactorVAE](https://arxiv.org/abs/1802.05983), which works to disnentangle representations by encouraging the distribution of
+representations to be factorial and hence independent across the dimensions
 
 ## My Approach
 
