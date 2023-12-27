@@ -23,7 +23,16 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   <Header />
   <main id="main-content">
     <section id="hero" class="flex items-center space-x-4">
-      <img src="/assets/IMG_Profile.png" alt="Profile Image" class="w-32 h-32 rounded-full">
+      <div class="flex-shrink-0 mr-4"><img src="/assets/IMG_Profile.png" alt="Profile Image" class="w-32 h-32 rounded-full mb-8">
+        {
+          // only display if at least one social link is enabled
+          socialCount > 0 && (
+            <div class="social-wrapper">
+              <Socials />
+            </div>
+          )
+        }</div>
+      
       <div>
         <h1 class="text-3xl font-bold sm:text-5xl">Suraj Anand</h1>
       <p>
@@ -32,15 +41,6 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         mathematic/scientific ideas. My goal is to build algorithms that learn how to do useful things and are aligned with human values. 
       </p>
       <p>Please read some of my blog posts for more information!</p>
-      {
-        // only display if at least one social link is enabled
-        socialCount > 0 && (
-          <div class="social-wrapper">
-            <div class="social-links">Social Links:</div>
-            <Socials />
-          </div>
-        )
-      }
       </div>
     </section>
 
@@ -103,7 +103,6 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   #hero {
     @apply pt-8 pb-6;
   }
-  
   #hero img {
     @apply w-32 h-32 rounded-full mb-4;
   }
@@ -120,7 +119,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     @apply my-2;
   }
   .social-wrapper {
-    @apply mt-4 flex flex-col sm:flex-row sm:items-center;
+    @apply ml-3 mt-4 flex flex-col sm:flex-row sm:items-center;
   }
   .social-links {
     @apply mr-2 mb-1 whitespace-nowrap sm:mb-0;
