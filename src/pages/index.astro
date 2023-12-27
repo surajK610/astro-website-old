@@ -24,6 +24,8 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   <main id="main-content">
     <section id="hero" class="flex items-center space-x-4">
       <div class="flex-shrink-0 mr-4"><img src="/assets/IMG_Profile.png" alt="Profile Image" class="w-32 h-32 rounded-full mb-8">
+        <p class="text-center mb-8">App Math + CS <br> @ Brown</p>
+        <Hr />
         {
           // only display if at least one social link is enabled
           socialCount > 0 && (
@@ -119,7 +121,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     @apply my-2;
   }
   .social-wrapper {
-    @apply ml-4 mt-4 flex flex-col sm:flex-row sm:items-center;
+    @apply flex flex-col mr-2 mt-5 mb-1 whitespace-nowrap sm:mb-0;
   }
   .social-links {
     @apply mr-2 mb-1 whitespace-nowrap sm:mb-0;
