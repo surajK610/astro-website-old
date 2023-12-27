@@ -4,7 +4,7 @@ export const SITE: Site = {
   website: "https://surajk610.github.io",
   author: "Suraj Anand",
   desc: "Suraj Anand's personal blog",
-  title: "SKA-Blog",
+  title: "Suraj Anand's Blog",
   ogImage: "favicon.jpg",
   lightAndDarkMode: true,
   postPerPage: 3,
