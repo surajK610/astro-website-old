@@ -22,9 +22,10 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 <Layout>
   <Header />
   <main id="main-content">
-    <section id="hero">
-      <h1>Suraj Anand</h1>
-      <img src="/assets/IMG_Profile.png" alt="Profile Image">
+    <section id="hero" class="flex items-center space-x-4">
+      <img src="/assets/IMG_Profile.png" alt="Profile Image" class="w-32 h-32 rounded-full">
+      <div>
+        <h1 class="text-3xl font-bold sm:text-5xl">Suraj Anand</h1>
       <p>
         Hi, I am a rising senior at Brown University pursuing an M.S. in Computer Science concurrently with a B.Sc. in 
         Applied Mathematics-Computer Science. I am interested in (1) solving complex engineering problems and (2) exploring fascinating 
@@ -40,6 +41,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
           </div>
         )
       }
+      </div>
     </section>
 
     <Hr />
@@ -101,6 +103,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   #hero {
     @apply pt-8 pb-6;
   }
+  
   #hero img {
     @apply w-32 h-32 rounded-full mb-4;
   }
