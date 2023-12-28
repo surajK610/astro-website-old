@@ -1,0 +1,15 @@
+---
+import { SITE } from "@config";
+import Posts from "@layouts/Posts.astro";
+import getSortedPosts from "@utils/getSortedPosts";
+import getPageNumbers from "@utils/getPageNumbers";
+
+import { getCollection } from "astro:content";
+import Projects from "@layouts/Projects.astro";
+
+const projs = await getCollection("projs");
+console.log(projs)
+
+---
+
+<Projects projs={projs} />
